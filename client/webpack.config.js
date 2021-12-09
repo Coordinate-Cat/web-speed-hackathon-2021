@@ -15,16 +15,7 @@ const config = {
   optimization: {
     minimize: true,
     minimizer: [
-      new TerserPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true,
-        terserOptions: {
-          compress: {
-            drop_console: true,
-          },
-        },
-      }),
+      new TerserPlugin({}),
     ],
   },
   devServer: {
