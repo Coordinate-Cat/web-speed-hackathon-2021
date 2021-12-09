@@ -4,9 +4,9 @@
   "version": "0.0.1",
   "license": "MPL-2.0",
   "scripts": {
-    "analyze": "NODE_ENV=production webpack --mode=production --analyze",
+    "analyze": "cross-env NODE_ENV=development webpack --analyze",
     "prebuild": "rimraf ../dist",
-    "build": "NODE_ENV=production webpack --mode production",
+    "build": "cross-env NODE_ENV=development webpack",
     "develop": "cross-env NODE_ENV=development webpack serve"
   },
   "dependencies": {
