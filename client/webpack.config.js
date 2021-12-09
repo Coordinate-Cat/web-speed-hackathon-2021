@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
+const TerserPlugin = require("terser-webpack-plugin")
 
 const SRC_PATH = path.resolve(__dirname, './src');
 const PUBLIC_PATH = path.resolve(__dirname, '../public');
@@ -11,6 +12,21 @@ const DIST_PATH = path.resolve(__dirname, '../dist');
 
 /** @type {import('webpack').Configuration} */
 const config = {
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true,
+        terserOptions: {
+          compress: {
+            drop_console: true,
+          },
+        },
+      }),
+    ],
+  },
   devServer: {
     historyApiFallback: true,
     host: '0.0.0.0',
